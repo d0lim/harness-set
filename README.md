@@ -16,7 +16,7 @@ Claude Code agent-harness 플러그인 모음.
 
 | 이름 | 설명 |
 |------|------|
-| *(아직 하네스가 없습니다)* | |
+| [presentation](./presentation) | 발표 대본 작성 + reveal.js 슬라이드 제작 + 청중 피드백 |
 
 ## 하네스 구조
 
