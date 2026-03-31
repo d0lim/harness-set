@@ -5,7 +5,7 @@ description: "청중 페르소나를 설정하고 그 관점에서 발표 대본
 
 # Audience Review — 청중 관점 피드백
 
-청중 페르소나를 설정하고 그 관점에서 발표 대본과 슬라이드를 평가한다.
+청중 페르소나를 설정하고 그 관점에서 발표 대본과 슬라이드를 평가한다. `agent-browser`를 사용해 실제 렌더링된 슬라이드를 브라우저에서 열고 스크린샷을 캡처하여 시각적 피드백을 제공한다.
 
 ## 페르소나 설정
 
@@ -62,6 +62,68 @@ description: "청중 페르소나를 설정하고 그 관점에서 발표 대본
 2. **대안 제시**: 문제만 지적하지 않고 해결책을 함께 제안
 3. **잘된 점도 명시**: 수정 과정에서 실수로 제거하지 않도록
 4. **페르소나 일관성**: 모든 피드백이 설정된 청중의 관점에서 나와야 한다
+
+## 시각적 리뷰: agent-browser
+
+HTML 소스만 읽으면 레이아웃 깨짐, 폰트 크기, 여백, 색상 대비 등을 정확히 판단할 수 없다. `agent-browser`로 실제 렌더링된 슬라이드를 확인한다.
+
+### 전제 조건
+- `agent-browser`가 설치되어 있어야 한다 (`npm install -g agent-browser && agent-browser install`)
+- 설치되어 있지 않으면 시각적 리뷰를 건너뛰고 HTML 소스 기반으로만 리뷰한다. 피드백에 "시각적 리뷰 미수행 — agent-browser 미설치" 표시
+
+### 슬라이드 캡처 프로세스
+
+```bash
+# 1. 슬라이드 열기
+agent-browser --allow-file-access open "file://{슬라이드 절대 경로}"
+
+# 2. 첫 슬라이드 스크린샷
+agent-browser screenshot _workspace/screenshots/slide_01.png
+
+# 3. 다음 슬라이드로 이동 + 캡처 (슬라이드 수만큼 반복)
+agent-browser press ArrowRight
+agent-browser screenshot _workspace/screenshots/slide_02.png
+
+# ... 모든 슬라이드에 대해 반복
+
+# 4. 발표자 노트 확인 (S 키)
+agent-browser press s
+agent-browser screenshot _workspace/screenshots/speaker_view.png
+
+# 5. 슬라이드 오버뷰 확인 (ESC 키)
+agent-browser press Escape
+agent-browser screenshot _workspace/screenshots/overview.png
+
+# 6. 브라우저 닫기
+agent-browser close
+```
+
+### 시각적 평가 항목
+
+캡처한 스크린샷을 Read로 확인하면서 다음을 평가한다:
+
+| 항목 | 확인할 것 |
+|------|----------|
+| **가독성** | 텍스트 크기가 충분한가, 배경과 텍스트의 대비가 적절한가 |
+| **정보 밀도** | 한 슬라이드에 너무 많은 요소가 있지 않은가 |
+| **레이아웃** | 요소가 정렬되어 있는가, 여백이 적절한가 |
+| **일관성** | 슬라이드 간 디자인(색상, 폰트, 스타일)이 일관적인가 |
+| **코드 가독성** | 코드 블록이 있으면 하이라이팅이 적용되었는가, 폰트 크기가 적절한가 |
+| **fragment 동작** | 리스트 항목이 하나씩 나타나는 게 의도대로인가 |
+| **발표자 노트** | 핵심 키워드가 포함되어 있는가, 발표자에게 유용한가 |
+
+### 시각적 피드백 형식
+
+슬라이드별 피드백에 시각적 평가를 추가한다:
+
+```markdown
+### 슬라이드 N: [제목]
+- **우선순위:** Critical | Important | Nice-to-have
+- **대본:** [피드백]
+- **슬라이드 (소스):** [HTML 구조 피드백]
+- **슬라이드 (시각):** [렌더링 결과 피드백 — 스크린샷 기반]
+- **개선 제안:** [구체적이고 실행 가능한 제안]
+```
 
 ## 2차 리뷰 (피드백 반영 후)
 
