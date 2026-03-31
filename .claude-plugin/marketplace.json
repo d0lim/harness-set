@@ -10,7 +10,7 @@
       "name": "presentation",
       "source": "./presentation",
       "description": "발표 대본 작성/개선, reveal.js 슬라이드 제작, 주제 리서치, 청중 페르소나 피드백(agent-browser 시각적 리뷰)을 통합하여 최고의 발표 자료를 만드는 하네스.",
-      "version": "1.1.0"
+      "version": "1.1.1"
     }
   ]
 }
