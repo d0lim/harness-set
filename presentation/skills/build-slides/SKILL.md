@@ -1,6 +1,6 @@
 ---
 name: build-slides
-description: "reveal.js를 활용해 발표 슬라이드 HTML을 생성하는 스킬. 대본의 핵심 메시지를 시각적으로 효과적인 슬라이드로 변환하고, 애니메이션·전환·발표자 노트를 포함한 단일 HTML 파일을 생성한다. 슬라이드 제작, 프레젠테이션 제작, reveal.js, 발표 자료 만들기 시 사용."
+description: "reveal.js를 활용해 발표 슬라이드 HTML을 생성하는 스킬. 대본의 핵심 메시지를 시각적으로 효과적인 슬라이드로 변환하고, 애니메이션·전환·발표자 노트를 포함한 단일 HTML 파일을 생성한다. presentation-orchestrator 워크플로우의 하위 스킬로, 오케스트레이터가 내부적으로 호출한다."
 ---
 
 # Build Slides — reveal.js 슬라이드 제작

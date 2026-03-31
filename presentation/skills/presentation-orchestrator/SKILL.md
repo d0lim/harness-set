@@ -1,6 +1,6 @@
 ---
 name: presentation-orchestrator
-description: "발표 대본 작성과 reveal.js 슬라이드 제작을 총괄하는 오케스트레이터. 주제 리서치, 대본 작성, 슬라이드 제작, 청중 페르소나 피드백, 반복 개선을 하나의 워크플로우로 조율한다. 발표 준비, 프레젠테이션 만들기, 슬라이드 만들어줘, 발표 자료 만들기, 발표 도와줘, PT 만들기, 발표 대본 작성 등 발표와 관련된 모든 요청에 사용. 단순히 슬라이드만 요청해도 이 스킬을 사용할 것."
+description: "새로운 발표 자료(대본+슬라이드)를 처음부터 생성하는 오케스트레이터. 주제 리서치, 대본 작성, reveal.js 슬라이드 제작, 청중 페르소나 피드백, 반복 개선을 하나의 워크플로우로 조율한다. 발표 준비, 프레젠테이션 만들기, 슬라이드 만들어줘, 발표 자료 만들기, PT 만들기, keynote 준비, pitch deck, 강의 자료 만들기, 데크 만들기, 발표 도와줘 등 새 발표 자료를 생성하는 요청에 사용. 기존 발표 자료의 검색·번역·변환·부분 수정, 보고서·문서 작성, 발표 기술 코칭, UI 슬라이더 컴포넌트 구현은 이 스킬의 범위가 아님."
 ---
 
 # Presentation Orchestrator
@@ -28,6 +28,7 @@ description: "발표 대본 작성과 reveal.js 슬라이드 제작을 총괄하
    - **청중**: 누구 앞에서 발표하는가 (기본값: 비즈니스 전문가)
    - **발표 목적**: 정보 전달 / 설득 / 교육 / 영감 (기본값: 정보 전달)
    - **특별 요구사항**: 특정 내용 포함, 톤, 언어 등
+   - **슬라이드 테마**: 사용자가 지정한 reveal.js 테마 (기본값: 발표 성격에 맞게 자동 선택)
 
 2. 누락된 정보가 있으면 사용자에게 질문한다. 단, 최소한 주제만 있으면 진행 가능.
 
@@ -73,10 +74,10 @@ description: "발표 대본 작성과 reveal.js 슬라이드 제작을 총괄하
    TaskCreate(tasks: [
      { title: "주제 리서치", description: "발표 주제에 대한 심층 조사 수행", assignee: "researcher" },
      { title: "발표 대본 작성", description: "리서치 결과 기반 발표 대본 작성", assignee: "scriptwriter", depends_on: ["주제 리서치"] },
-     { title: "슬라이드 제작", description: "대본 기반 reveal.js 슬라이드 생성", assignee: "slide-builder", depends_on: ["발표 대본 작성"] },
+     { title: "슬라이드 제작", description: "대본 기반 reveal.js 슬라이드 생성", assignee: "slide-builder", depends_on: ["주제 리서치", "발표 대본 작성"] },
      { title: "청중 피드백", description: "대본+슬라이드 완성 후 청중 관점 평가", assignee: "audience-reviewer", depends_on: ["발표 대본 작성", "슬라이드 제작"] },
-     { title: "피드백 반영 - 대본", description: "청중 피드백 중 Critical/Important 반영", assignee: "scriptwriter", depends_on: ["청중 피드백"] },
-     { title: "피드백 반영 - 슬라이드", description: "청중 피드백 중 Critical/Important 반영", assignee: "slide-builder", depends_on: ["청중 피드백"] }
+     { title: "피드백 반영 - 대본", description: "청중 피드백 중 Critical/Important 반영. _workspace/04_audience-reviewer_feedback.md를 읽고 수정본을 _workspace/05_scriptwriter_script_v2.md에 저장하라.", assignee: "scriptwriter", depends_on: ["청중 피드백"] },
+     { title: "피드백 반영 - 슬라이드", description: "청중 피드백 중 Critical/Important 반영. _workspace/04_audience-reviewer_feedback.md를 읽고 수정본을 _workspace/05_slide-builder_slides_v2.html에 저장하라.", assignee: "slide-builder", depends_on: ["청중 피드백"] }
    ])
    ```
 
@@ -99,6 +100,7 @@ description: "발표 대본 작성과 reveal.js 슬라이드 제작을 총괄하
 - TaskGet으로 전체 진행률 확인
 - 팀원이 막혔을 때 SendMessage로 지시
 - researcher가 조기 완료되면 scriptwriter/slide-builder에게 알림
+- researcher가 주제 범위가 너무 광범위하다고 보고하면, 사용자에게 3가지 세부 방향을 제시하고 선택을 요청한다
 
 ### Phase 3: 피드백 반영 및 최종화
 
@@ -107,7 +109,10 @@ description: "발표 대본 작성과 reveal.js 슬라이드 제작을 총괄하
 3. scriptwriter와 slide-builder가 피드백을 반영한 수정본 생성:
    - `_workspace/05_scriptwriter_script_v2.md`
    - `_workspace/05_slide-builder_slides_v2.html`
-4. 수정본을 Read하여 피드백이 반영되었는지 확인
+4. 수정본을 Read하여 피드백이 반영되었는지 확인:
+   - `04_feedback.md`의 Critical 항목이 모두 v2에 반영되었는지 대조
+   - 미반영 항목이 있으면 해당 에이전트에게 SendMessage로 구체적 항목을 재지시 (1회만 재시도)
+   - 재시도 후에도 미반영이면 사용자에게 보고하고 현재 상태로 진행
 
 ### Phase 4: 최종 산출물 생성 및 정리
 
@@ -142,8 +147,8 @@ description: "발표 대본 작성과 reveal.js 슬라이드 제작을 총괄하
 
 | 상황 | 전략 |
 |------|------|
-| researcher 실패 | 리더가 직접 기본 리서치 수행 후 scriptwriter에게 전달 |
-| scriptwriter 실패 | 리더가 리서치 결과 기반으로 기본 구조의 대본 생성 |
+| researcher 실패 | 리더가 WebSearch로 주제 관련 2-3회 검색 후 research-topic 출력 형식에 맞춰 `01_researcher_findings.md`를 직접 작성하고 scriptwriter에게 전달 |
+| scriptwriter 실패 | 리더가 리서치 결과를 바탕으로 write-script 출력 형식(슬라이드별 핵심 메시지 + 시간 배분)에 맞춰 최소 구조의 대본을 `02_scriptwriter_script.md`에 직접 작성 |
 | slide-builder 실패 | 대본만으로 최종 산출물 제공, 슬라이드 미생성 알림 |
 | audience-reviewer 실패 | 피드백 없이 초안을 최종본으로 사용, 사용자에게 직접 리뷰 요청 |
 | 팀원 간 통신 지연 | 리더가 TaskGet으로 확인 후 SendMessage로 재촉 |

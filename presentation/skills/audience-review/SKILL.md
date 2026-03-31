@@ -1,6 +1,6 @@
 ---
 name: audience-review
-description: "청중 페르소나를 설정하고 그 관점에서 발표 대본과 슬라이드를 평가하는 스킬. 이해도·설득력·참여도 3축으로 슬라이드별 구체적 피드백을 제공하고 우선순위(Critical/Important/Nice-to-have)를 매긴다. 발표 피드백, 청중 관점 리뷰, 프레젠테이션 평가 시 사용."
+description: "청중 페르소나를 설정하고 그 관점에서 발표 대본과 슬라이드를 평가하는 스킬. 이해도·설득력·참여도 3축으로 슬라이드별 구체적 피드백을 제공하고 우선순위(Critical/Important/Nice-to-have)를 매긴다. presentation-orchestrator 워크플로우의 하위 스킬로, 오케스트레이터가 내부적으로 호출한다."
 ---
 
 # Audience Review — 청중 관점 피드백
