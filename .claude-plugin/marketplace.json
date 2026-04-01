@@ -11,6 +11,12 @@
       "source": "./presentation",
       "description": "발표 대본 작성/개선, reveal.js 슬라이드 제작, 주제 리서치, 청중 페르소나 피드백(agent-browser 시각적 리뷰)을 통합하여 최고의 발표 자료를 만드는 하네스.",
       "version": "1.1.1"
+    },
+    {
+      "name": "knowledge-distiller",
+      "source": "./knowledge-distiller",
+      "description": "Zettelkasten 방식의 지식 증류 하네스. 주제 리서치 → 참조 노트 → 핵심 통찰 추출 → 논리 흐름 합성 → 저작물 통합을 자동화하며, 여러 라운드로 지식을 점진적으로 축적한다.",
+      "version": "1.0.1"
     }
   ]
 }
