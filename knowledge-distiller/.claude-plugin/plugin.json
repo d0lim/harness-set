@@ -1,6 +1,6 @@
 {
   "name": "knowledge-distiller",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Zettelkasten 방식의 지식 증류 하네스. 주제 리서치 → 참조 노트 → 핵심 통찰 추출 → 논리 흐름 합성 → 저작물 통합을 자동화하며, 여러 라운드로 지식을 점진적으로 축적한다.",
   "author": {
     "name": "d0lim",
