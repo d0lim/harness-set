@@ -1,7 +1,7 @@
 {
   "name": "d0lim-harness-set",
-  "description": "Claude Code agent-harness 플러그인 모음. 발표 자료 제작, Zettelkasten 지식 증류 등 다양한 하네스를 제공합니다.",
-  "version": "1.2.0",
+  "description": "Claude Code agent-harness 플러그인 모음. 발표 자료 제작, Zettelkasten 지식 증류, repository 통합 등 다양한 하네스를 제공합니다.",
+  "version": "1.3.0",
   "author": {
     "name": "d0lim",
     "url": "https://github.com/d0lim"
@@ -17,6 +17,9 @@
     "agent-team",
     "research",
     "zettelkasten",
-    "knowledge-distiller"
+    "knowledge-distiller",
+    "repo-merger",
+    "monorepo",
+    "migration"
   ]
 }
