@@ -27,8 +27,7 @@ Claude Code agent-harness 플러그인 모음.
 ```
 <harness-name>/
 ├── .claude-plugin/
-│   ├── plugin.json          # 플러그인 메타데이터
-│   └── marketplace.json     # marketplace 배포 정보
+│   └── plugin.json          # 메타데이터 + marketplace 정보
 ├── agents/                  # 에이전트 정의
 ├── skills/                  # 스킬 정의
 └── README.md                # 사용법

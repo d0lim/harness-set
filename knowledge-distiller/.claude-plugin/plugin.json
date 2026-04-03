@@ -5,5 +5,8 @@
   "author": {
     "name": "d0lim",
     "url": "https://github.com/d0lim"
-  }
+  },
+  "category": "productivity",
+  "tags": ["research", "zettelkasten", "knowledge-management", "writing", "insight-extraction"],
+  "language": "ko"
 }

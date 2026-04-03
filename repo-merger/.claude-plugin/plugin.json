@@ -5,5 +5,8 @@
   "author": {
     "name": "d0lim",
     "url": "https://github.com/d0lim"
-  }
+  },
+  "category": "productivity",
+  "tags": ["repo-merger", "monorepo", "migration", "integration", "codebase-consolidation"],
+  "language": "ko"
 }
