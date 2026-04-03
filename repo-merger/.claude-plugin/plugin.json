@@ -1,6 +1,6 @@
 {
   "name": "repo-merger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "brownfield git repository 여러 개를 하나의 통합 프로젝트로 논리적으로 재구성하는 하네스. 의존성 통합, 빌드 파이프라인 단일화, 서비스 경계 재설계, 코딩 컨벤션 통일, CLAUDE.md 생성까지 수행한다.",
   "author": {
     "name": "d0lim",
