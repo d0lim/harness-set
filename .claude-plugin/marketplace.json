@@ -8,6 +8,7 @@
   "plugins": [
     { "name": "presentation", "source": "./presentation", "description": "발표 대본 작성/개선, reveal.js 슬라이드 제작, 주제 리서치, 청중 페르소나 피드백(agent-browser 시각적 리뷰)을 통합하여 최고의 발표 자료를 만드는 하네스", "version": "1.1.1" },
     { "name": "knowledge-distiller", "source": "./knowledge-distiller", "description": "Zettelkasten 방식의 지식 증류 하네스. 주제 리서치 → 참조 노트 → 핵심 통찰 추출 → 논리 흐름 합성 → 저작물 통합을 자동화하며, 여러 라운드로 지식을 점진적으로 축적한다.", "version": "2.0.0" },
-    { "name": "repo-merger", "source": "./repo-merger", "description": "brownfield git repository 여러 개를 하나의 통합 프로젝트로 논리적으로 재구성하는 하네스. 의존성 통합, 빌드 파이프라인 단일화, 서비스 경계 재설계, 코딩 컨벤션 통일, CLAUDE.md 생성까지 수행한다.", "version": "1.1.0" }
+    { "name": "repo-merger", "source": "./repo-merger", "description": "brownfield git repository 여러 개를 하나의 통합 프로젝트로 논리적으로 재구성하는 하네스. 의존성 통합, 빌드 파이프라인 단일화, 서비스 경계 재설계, 코딩 컨벤션 통일, CLAUDE.md 생성까지 수행한다.", "version": "1.1.0" },
+    { "name": "idea-forge", "source": "./idea-forge", "description": "트렌드 리서치 기반 프로젝트 아이디어 생성/평가/고도화 하네스. 실시간 트렌드(식품, 유튜브, SNS, 문화 현상)와 시장 분석을 통해 대중의 갈망을 파악하고, 수익성 있는 프로젝트 아이디어를 생성하거나 사용자 아이디어를 평가·개선한다.", "version": "1.0.0" }
   ]
 }
